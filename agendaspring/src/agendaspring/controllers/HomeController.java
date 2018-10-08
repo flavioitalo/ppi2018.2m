@@ -10,7 +10,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String homeSeila() {
 		System.out.println("Chamou o método da home! ");
-		return "home.jsp";
+		return "home";
 	}
 
 }
