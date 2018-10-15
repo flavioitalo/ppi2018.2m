@@ -20,7 +20,7 @@ public class ContatoDAO {
 
 	public boolean inserir(Contato contato) {
 
-		String sql = "insert into contatos (nome, email, endereco) values (?, ?, ?);";
+		String sql = "insert into contatos (nome, email, endereco, dataNascimeto) values (?, ?, ?, ?);";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -29,7 +29,7 @@ public class ContatoDAO {
 			stmt.setString(2, contato.getEmail());
 			stmt.setString(3, contato.getEndereco());
 
-			//stmt.setDate(4, new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
+			stmt.setDate(4, new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
 
 			stmt.execute();
 			stmt.close();
@@ -43,7 +43,7 @@ public class ContatoDAO {
 		return true;
 	}
 
-	/*public List<Contato> getLista() {
+	public List<Contato> getLista() {
 		List<Contato> result = new ArrayList<>();
 
 		try {
@@ -135,7 +135,5 @@ public class ContatoDAO {
 
 		return result;
 	}
-
-	*/
 
 }
