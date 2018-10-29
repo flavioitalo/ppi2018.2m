@@ -22,12 +22,12 @@ public class ContatoController {
 	
 	//Método de inserir//
 	@PostMapping("/contatos")
-	public ModelAndView adicionar(Contato contato ) {
+	public String adicionar(Contato contato ) {
 	System.out.println(contato);	
 	ContatoDAO dao = new ContatoDAO ();
 	dao.inserir(contato);	
 		
-		return listar();
+		return "redirect:contatos";
 	}
 	
 	//Método de listagem//
@@ -42,12 +42,12 @@ public class ContatoController {
 	}
 	
 	@RequestMapping("/contatos/remover")
-	public ModelAndView remover(Contato contato) {
+	public String remover(Contato contato) {
 		System.out.println("Chamou o método remover ");
 		ContatoDAO dao = new ContatoDAO ();
 		dao.remover(contato);
 		
-		return listar();
+		return "redirect:../contatos/";
 	}
 
 }
