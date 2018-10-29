@@ -20,16 +20,18 @@ public class ContatoController {
 		return "contatos/form";
 	}
 	
+	//Método de inserir//
 	@PostMapping("/contatos")
-	public String adicionar(Contato contato ) {
+	public ModelAndView adicionar(Contato contato ) {
 	System.out.println(contato);	
 	ContatoDAO dao = new ContatoDAO ();
 	dao.inserir(contato);	
 		
-		return "contatos/ok";
+		return listar();
 	}
 	
-	@GetMapping("/contatos")
+	//Método de listagem//
+	@GetMapping("/contatos")   
 	public ModelAndView listar() {
 		ContatoDAO dao = new ContatoDAO ();
 		List<Contato> lista = dao.getLista();
@@ -37,6 +39,15 @@ public class ContatoController {
 		model.addObject("contatos", lista);
 		return model;
 	
+	}
+	
+	@RequestMapping("/contatos/remover")
+	public ModelAndView remover(Contato contato) {
+		System.out.println("Chamou o método remover ");
+		ContatoDAO dao = new ContatoDAO ();
+		dao.remover(contato);
+		
+		return listar();
 	}
 
 }

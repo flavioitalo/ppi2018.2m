@@ -20,7 +20,7 @@ public class ContatoDAO {
 
 	public boolean inserir(Contato contato) {
 
-		String sql = "insert into contatos (nome, email, endereco, dataNascimeto) values (?, ?, ?, ?);";
+		String sql = "insert into contatos (nome, email, endereco, dataNascimento) values (?, ?, ?, ?);";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
