@@ -12,16 +12,18 @@ import agendaspring.daos.ContatoDAO;
 import agendaspring.models.Contato;
 
 @Controller
+@RequestMapping("/contatos")
+
 public class ContatoController {
 	
-	@RequestMapping("/contatos/form")
+	@RequestMapping("/form")
 	public String form() {
 		System.out.println("Chamou o form de contatos ");
 		return "contatos/form";
 	}
 	
 	//Método de inserir//
-	@PostMapping("/contatos")
+	@PostMapping
 	public String adicionar(Contato contato ) {
 	System.out.println(contato);	
 	ContatoDAO dao = new ContatoDAO ();
@@ -31,7 +33,7 @@ public class ContatoController {
 	}
 	
 	//Método de listagem//
-	@GetMapping("/contatos")   
+	@GetMapping 
 	public ModelAndView listar() {
 		ContatoDAO dao = new ContatoDAO ();
 		List<Contato> lista = dao.getLista();
@@ -41,7 +43,7 @@ public class ContatoController {
 	
 	}
 	
-	@RequestMapping("/contatos/remover")
+	@RequestMapping("/remover")
 	public String remover(Contato contato) {
 		System.out.println("Chamou o método remover ");
 		ContatoDAO dao = new ContatoDAO ();
